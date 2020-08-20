@@ -42,7 +42,7 @@ const SignUp: React.FC = () => {
 
             <Input name="password" icon="lock" placeholder="Senha" />
 
-            <Button onPress={() => console.log('Button clicked!')}>
+            <Button onPress={() => console.log('Button clicked!!')}>
               Entrar
             </Button>
           </Container>
