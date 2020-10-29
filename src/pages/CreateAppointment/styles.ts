@@ -54,6 +54,7 @@ export const UserAvatar = styled.Image`
   height: 56px;
   border-radius: 28px;
   margin-left: auto;
+  background: #999591;
 `;
 
 export const ProvidersListContainer = styled.View`
