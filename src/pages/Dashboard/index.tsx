@@ -40,6 +40,13 @@ const Dashboard: React.FC = () => {
     });
   }, []);
 
+  const handleSelectProvider = useCallback(
+    (providerId: string) => {
+      navigate('AppointmentDatePicker', { providerId });
+    },
+    [navigate],
+  );
+
   const navigateToProfile = useCallback(() => {
     // navigate('Profile');
     signOut();
@@ -51,13 +58,6 @@ const Dashboard: React.FC = () => {
     },
     [navigate],
   );
-
-  // const handleSelectProvider = useCallback(
-  //   (providerId: string) => {
-  //     navigate('AppointmentDatePicker', { providerId });
-  //   },
-  //   [navigate],
-  // );
 
   return (
     <Container>

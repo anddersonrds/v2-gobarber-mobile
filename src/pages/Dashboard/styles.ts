@@ -38,9 +38,15 @@ export const UserAvatar = styled.Image`
   background: #999591;
 `;
 
-export const ProvidersList = styled(FlatList as new () => FlatList<Provider>)`
-  padding: 32px 24px 16px;
-`;
+export const ProvidersList = styled(
+  FlatList as new () => FlatList<Provider>,
+).attrs({
+  contentContainerStyle: {
+    paddingTop: 32,
+    paddingBottom: 16,
+    paddingHorizontal: 24,
+  },
+})``;
 
 export const ProvidersListTitle = styled.Text`
   font-size: 24px;
