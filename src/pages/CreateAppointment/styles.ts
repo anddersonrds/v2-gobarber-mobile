@@ -112,10 +112,10 @@ export const Section = styled.View`
 `;
 
 export const SectionTitle = styled.Text`
-  font-size: 18px;
-  color: #999591;
   font-family: 'RobotoSlab-Regular';
+  font-size: 18px;
   margin: 0 24px 12px;
+  color: #999591;
 `;
 
 export const SectionContent = styled.ScrollView.attrs({
@@ -130,17 +130,16 @@ export const Hour = styled(RectButton).attrs((props: HourProps) => ({
   enabled: props.available,
 }))<HourProps>`
   padding: 12px;
-  background: ${({ selected }) => (selected ? '#FF9000' : '#3e3b47')};
   border-radius: 10px;
   margin-right: 8px;
-
   opacity: ${({ available }) => (available ? 1 : 0.3)};
+  background: ${({ selected }) => (selected ? '#FF9000' : '#3e3b47')};
 `;
 
 export const HourText = styled.Text<HourTextProps>`
-  color: ${props => (props.selected ? '#232129' : '#f4ede8')};
   font-family: 'RobotoSlab-Regular';
   font-size: 18px;
+  color: ${({ selected }) => (selected ? '#232129' : '#f4ede8')};
 `;
 
 export const CreateAppointmentButton = styled(RectButton)`
