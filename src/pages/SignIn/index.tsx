@@ -8,16 +8,16 @@ import {
   TextInput,
   Alert,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
-import * as Yup from 'yup';
-
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
 
+import Icon from 'react-native-vector-icons/Feather';
+import * as Yup from 'yup';
+
 import { useAuth } from '../../hooks/auth';
 
-import getValidationErros from '../../utils/getValidationErrors';
+import getValidationErrors from '../../utils/getValidationErrors';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -68,9 +68,10 @@ const SignIn: React.FC = () => {
         });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
-          const erros = getValidationErros(err);
-          formRef.current?.setErrors(erros);
+          const errors = getValidationErrors(err);
+          console.log(errors);
 
+          formRef.current?.setErrors(errors);
           return;
         }
 
@@ -113,6 +114,7 @@ const SignIn: React.FC = () => {
                   passwordInputRef.current?.focus();
                 }}
               />
+
               <Input
                 ref={passwordInputRef}
                 name="password"

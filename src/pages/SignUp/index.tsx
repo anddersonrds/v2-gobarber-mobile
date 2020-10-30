@@ -2,28 +2,28 @@ import React, { useRef, useCallback } from 'react';
 import {
   Image,
   View,
-  KeyboardAvoidingView,
   ScrollView,
+  KeyboardAvoidingView,
   Platform,
   TextInput,
   Alert,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
+import Icon from 'react-native-vector-icons/Feather';
 import * as Yup from 'yup';
 
 import api from '../../services/api';
 
-import getValidationErros from '../../utils/getValidationErrors';
+import getValidationErrors from '../../utils/getValidationErrors';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-import { Container, Title, BackToSignIn, BackToSignInText } from './styles';
-
 import logoImg from '../../assets/logo.png';
+
+import { Container, Title, BackToSignIn, BackToSignInText } from './styles';
 
 interface SignUpFormData {
   name: string;
@@ -65,9 +65,8 @@ const SignUp: React.FC = () => {
         navigation.goBack();
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
-          const erros = getValidationErros(err);
-          formRef.current?.setErrors(erros);
-
+          const errors = getValidationErrors(err);
+          formRef.current?.setErrors(errors);
           return;
         }
 
@@ -93,6 +92,7 @@ const SignUp: React.FC = () => {
         >
           <Container>
             <Image source={logoImg} />
+
             <View>
               <Title>Crie sua conta</Title>
             </View>
@@ -113,7 +113,7 @@ const SignUp: React.FC = () => {
                 ref={emailInputRef}
                 name="email"
                 icon="mail"
-                placeholder="E-amil"
+                placeholder="E-mail"
                 keyboardType="email-address"
                 autoCapitalize="none"
                 autoCorrect={false}
@@ -125,17 +125,17 @@ const SignUp: React.FC = () => {
 
               <Input
                 ref={passwordInputRef}
+                secureTextEntry
                 name="password"
                 icon="lock"
                 placeholder="Senha"
-                secureTextEntry
                 textContentType="newPassword"
                 returnKeyType="send"
                 onSubmitEditing={() => formRef.current?.submitForm()}
               />
 
               <Button onPress={() => formRef.current?.submitForm()}>
-                Cadastrar
+                Entrar
               </Button>
             </Form>
           </Container>
@@ -144,7 +144,7 @@ const SignUp: React.FC = () => {
 
       <BackToSignIn onPress={() => navigation.goBack()}>
         <Icon name="arrow-left" size={20} color="#fff" />
-        <BackToSignInText>Voltar para o login</BackToSignInText>
+        <BackToSignInText>Voltar para logon</BackToSignInText>
       </BackToSignIn>
     </>
   );
